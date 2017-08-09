@@ -22,6 +22,15 @@ public static class EnumExtensions
         return (lValue & lFlag) != 0;
     }
 
+    public static T And<T>(this T value, T other) where T : struct
+    {
+        CheckIsEnum<T>(true);
+        long lValue = Convert.ToInt64(value);
+        long lFlag = Convert.ToInt64(other);
+        var a = lValue & lFlag;
+        return (T)Enum.ToObject(typeof(T), a);
+    }
+
     public static IEnumerable<T> GetFlags<T>(this T value) where T : struct
     {
         CheckIsEnum<T>(true);
