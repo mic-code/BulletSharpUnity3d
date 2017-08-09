@@ -14,7 +14,7 @@ public static class EnumExtensions
             throw new ArgumentException(string.Format("Type '{0}' doesn't have the 'Flags' attribute", typeof(T).FullName));
     }
 
-    public static bool IsFlagSet<T>(this T value, T flag) where T : struct
+    public static bool HasFlag<T>(this T value, T flag) where T : struct
     {
         CheckIsEnum<T>(true);
         long lValue = Convert.ToInt64(value);
@@ -27,7 +27,7 @@ public static class EnumExtensions
         CheckIsEnum<T>(true);
         foreach (T flag in Enum.GetValues(typeof(T)).Cast<T>())
         {
-            if (value.IsFlagSet(flag))
+            if (value.HasFlag(flag))
                 yield return flag;
         }
     }

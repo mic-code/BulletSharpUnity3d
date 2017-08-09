@@ -17,14 +17,14 @@ namespace BulletUnity.Debugging {
         
 		public static void Log(DebugType debugType, object message)
         {
-			if(EnumExtensions.IsFlagSet(DebugType.Info, debugType)) {
+			if(EnumExtensions.HasFlag(DebugType.Info, debugType)) {
             	Debug.Log(message);
 			}
         }
 
 		public static void LogWarning(DebugType debugType, object message)
         {
-			if(EnumExtensions.IsFlagSet(DebugType.Warning, debugType)) {
+			if(EnumExtensions.HasFlag(DebugType.Warning, debugType)) {
             	Debug.LogWarning(message);
 			}
         }
@@ -39,13 +39,13 @@ namespace BulletUnity.Debugging {
         */
 
 		public static void Log(DebugType debugType, object message, params object[] arguments) {
-			if(EnumExtensions.IsFlagSet(DebugType.Info, debugType)) {
+			if(EnumExtensions.HasFlag(DebugType.Info, debugType)) {
 				Debug.Log(string.Format(message.ToString(), arguments));
 			}
 		}
 
 		public static void LogWarning(DebugType debugType, object message, params object[] arguments) {
-			if(EnumExtensions.IsFlagSet(DebugType.Warning, debugType)) {
+			if(EnumExtensions.HasFlag(DebugType.Warning, debugType)) {
 				Debug.LogWarning(string.Format(message.ToString(), arguments));
 			}
 		}
